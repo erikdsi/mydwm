@@ -1,10 +1,12 @@
 /* See LICENSE file for copyright and license details. */
 
+
+
 /* appearance */
-static const char font[]            = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
+static const char font[]            = "Clean";//"-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#4d4b47";
-static const char normfgcolor[]     = "#4a9701";
+static const char normfgcolor[]     = "#efeae1";
 static const char selbordercolor[]  = "#4a9701";
 static const char selbgcolor[]      = "#efeae1";
 static const char selfgcolor[]      = "#4a9701";
@@ -14,11 +16,11 @@ static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
 /* tagging */
-static const char *tags[] = { "dev", "fun", "wtv" };
+static const char *tags[] = { "dev", "wat", "fun", "nop", "snd", "idk" };
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Firefox",  NULL,       NULL,       8,       False,       -1 },
+	{ "pavucontrol",  NULL,       NULL,       4,       False,       -1 },
 };
 
 /* layout(s) */
@@ -49,11 +51,14 @@ static const Layout layouts[] = {
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "tilda", NULL };
 /* Print Screen */
-//static const char *prsncmd[] = { "maim ", NULL };
+char buff[29];
+static const char *prsncmd[] = { "maim", "/home/erik/screenshots/screenshot.png", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ WINKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+    { 0,                            XK_Print,  spawn,          {.v = prsncmd } },
+    { WINKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ WINKEY,                       XK_Return, spawn,          {.v = dmenucmd } },
 	{ WINKEY|ShiftMask,             XK_t,      spawn,          {.v = termcmd } },
 	{ WINKEY,                       XK_b,      togglebar,      {0} },
 	{ ALTKEY,                       XK_Tab,    focusstack,     {.i = +1 } },
